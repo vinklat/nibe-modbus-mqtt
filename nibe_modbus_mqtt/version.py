@@ -28,7 +28,7 @@ def get_runtime_info():
 
     modules = {
         'paho-mqtt': pkg_resources.get_distribution("paho-mqtt").version,
-        'pymodbus': pkg_resources.get_distribution("pymodbus").version,
+        'modbus-tk': pkg_resources.get_distribution("modbus-tk").version,
     }
 
     runtime = {
