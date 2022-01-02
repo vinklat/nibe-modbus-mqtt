@@ -4,6 +4,7 @@ Modbus registers objects
 '''
 
 FAST_REGISTERS = [
+    # regster, description, a   
     [40083, 'EB100-BE1 Current [A]', 10, 'U'],
     None,
     [40081, 'EB100-BE1 Current [A]', 10, 'U'],
@@ -27,7 +28,8 @@ FAST_REGISTERS = [
 ]
 
 REGULAR_REGISTERS = [
-    [43009, 'Calc Supply S1 [°C]', 10, 'S'],
+    [43009, 'Calc Supply Heat S1 [°C]', 10, 'S'],
+    [44270, 'Calc Supply Cool S1 [°C]', 10, 'S'],
     [44703, 'EB101-EP14 Defrosting Outdoor Unit', 1, 'U'],
     [44702, 'EB101-EP14 Protection Status Register Outdoor Unit', 1, 'U'],
     [44362, 'EB101-EP14-BT28 Outdoor Temp [°C]', 1, 'S'],

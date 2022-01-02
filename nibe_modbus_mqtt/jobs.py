@@ -135,7 +135,7 @@ class Jobs():
                 # count extra metrics:
                 # - powermeter from current
                 if (duration is not None) and description.endswith('[A]'):
-                    key = f'{register}_wattseconds'
+                    key = f'{register}_ws'
                     if key not in self.power_meters:
                         self.power_meters[key] = 0
 
