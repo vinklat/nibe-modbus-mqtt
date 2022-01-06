@@ -152,6 +152,12 @@ def get_pars():
                               f'(default {MODBUS_TIMEOUT})'),
                         type=int,
                         **env_vars['MODBUS_TIMEOUT'])
+    parser.add_argument('-R',
+                        '--modbus-test-register',
+                        action='store',
+                        dest='modbus_test_register',
+                        help='Try to read holding register & exit. Test.',
+                        type=int)
     # parser.add_argument('-c',
     #                     '--nibe-config',
     #                     action='store',

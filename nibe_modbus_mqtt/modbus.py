@@ -6,7 +6,7 @@ Connect to a Nibe Modbus tcp slave device
 import logging
 from modbus_tk import modbus_tcp, hooks
 from modbus_tk.defines import READ_HOLDING_REGISTERS
-
+from modbus_tk.exceptions import ModbusError
 # create logger
 logger = logging.getLogger(__name__)
 
@@ -61,13 +61,13 @@ class Modbus():
     def read_slow_register(self, register):
         try:
             registers = self.master.execute(1, READ_HOLDING_REGISTERS, register, 1)
-        except (ConnectionRefusedError, OSError) as exc:
+        except (ConnectionRefusedError, OSError, ModbusError) as exc:
             raise ModbusException(exc) from exc
         return registers[0]
 
     def read_fast_registers(self, register, count=20):
         try:
             registers = self.master.execute(1, READ_HOLDING_REGISTERS, register, count)
-        except (ConnectionRefusedError, OSError) as exc:
+        except (ConnectionRefusedError, OSError, ModbusError) as exc:
             raise ModbusException(exc) from exc
         return registers
