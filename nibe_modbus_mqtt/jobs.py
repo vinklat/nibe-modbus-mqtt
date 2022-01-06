@@ -33,7 +33,7 @@ class Jobs():
             raw_value -= (1 << 16)
 
         if isinstance(divisor, int):
-            value = raw_value / divisor
+            value = float(raw_value) / divisor
 
         return value
 
@@ -64,7 +64,7 @@ class Jobs():
         self.prev_t_slow = t
 
         value = self.fix_value(raw_value, divisor, sign)
-        logger.info("%d %s = %s", register, description, value)
+        logger.info("%d %s = %f", register, description, value)
 
         payload = {register: value}
         self.mqtt.publish(json.dumps(payload))
@@ -96,7 +96,7 @@ class Jobs():
         self.prev_t_regular = t
 
         value = self.fix_value(raw_value, divisor, sign)
-        logger.info("%d %s = %s", register, description, value)
+        logger.info("%d %s = %f", register, description, value)
 
         payload = {register: value}
         self.mqtt.publish(json.dumps(payload))
@@ -129,19 +129,22 @@ class Jobs():
             if isinstance(FAST_REGISTERS[i], list):
                 register, description, divisor, sign = FAST_REGISTERS[i]
                 value = self.fix_value(registers[i], divisor, sign)
-                logger.info("%d %s = %s", register, description, value)
+                logger.info("%d %s = %f", register, description, value)
                 payload[register] = value
 
                 # count extra metrics:
-                # - powermeter from current
+                # - power charge from current
                 if (duration is not None) and description.endswith('[A]'):
-                    key = f'{register}_ws'
+                    key = f'{register}_C'
                     if key not in self.power_meters:
-                        self.power_meters[key] = 0
-
-                    meter = self.power_meters[key]
-                    meter += (230.0 * value * duration)
-                    logger.info("%s = %s", key, meter)
+                        logger.debug("Init power meter %s...", key)
+                        meter = 0
+                    else:
+                        meter = self.power_meters[key]
+                    
+                    meter += (value * duration)
+                    self.power_meters[key] = meter
+                    logger.info("%s = %f", key, meter)
                     payload[key] = meter
             i += 1
 
