@@ -28,17 +28,17 @@ FAST_REGISTERS = [
 ]
 
 REGULAR_REGISTERS = [
+    [44457, 'EB101-EP14 Compressor State', 1, 'U'],
+    [44979, 'EB101-EP14 Fan Speed Step', 1, 'U'],
+    [43086, 'Prio', 1, 'U'],
     [43009, 'Calc Supply Heat S1 [°C]', 10, 'S'],
-    [44270, 'Calc Supply Cool S1 [°C]', 10, 'S'],
     [44703, 'EB101-EP14 Defrosting Outdoor Unit', 1, 'U'],
-    [44702, 'EB101-EP14 Protection Status Register Outdoor Unit', 1, 'U'],
-    [44362, 'EB101-EP14-BT28 Outdoor Temp [°C]', 1, 'S'],
     [44363, 'EB101-EP14-BT28 Evaporator [°C]', 10, 'S'],
     [44060, 'EB101-EP14-BT16 Liquid Line [°C]', 10, 'S'],
     [44055, 'EB101-EP14-BT3 Return Temp [°C]', 10, 'S'],
     [44061, 'EB101-EP14-BT17 Suction [°C]', 10, 'S'],
-    [44706, 'EB101-EP14 Calculated Power Outdoor Unit [kW]', 1, 'U'],
     [40072, 'EP14 flow [l/m]', 10, 'U'],
+    [43514, 'EB100-EP14 PCA Base Relays', 1, 'U'],
 ]
 
 SLOW_REGISTERS = [
@@ -49,9 +49,15 @@ SLOW_REGISTERS = [
     [44071, 'EB101-EP14 total op. time compr. [h]', 1, 'U'],
     [44073, 'EB101-EP14 total HW op. time compr. [h]', 1, 'U'],
     [40737, 'EB101-EP14 total Cooling op. time compr. [h]', 1, 'U'],
+    [44978, 'EB101-EP14 Inverter Temperature [°C]', 10, 'S'],
     [44302, 'EP14 Heat Meter - Cooling Cpr [kWh]', 10, 'U'],
     [44308, 'EP14 Heat Meter - Heat Cpr [kWh]', 10, 'U'],
     [44300, 'EP14 Heat Meter - Heat Cpr and Add [kWh]', 10, 'U'],
     [44306, 'EP14 Heat Meter - HW Cpr [kWh]', 10, 'U'],
     [44298, 'EP14 Heat Meter - HW Cpr and Add [kWh]', 10, 'U'],
+    [43013, 'Freeze Protection Status', 1, 'U'],
+    [44702, 'EB101-EP14 Protection Status Register Outdoor Unit', 1, 'U'],
+    [44270, 'Calc Supply Cool S1 [°C]', 10, 'S'],
+    [44362, 'EB101-EP14-BT28 Outdoor Temp [°C]', 10, 'S'],
+    [44706, 'EB101-EP14 Calculated Power Outdoor Unit [kW]', 1, 'U'],
 ]
